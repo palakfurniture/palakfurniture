@@ -5,6 +5,11 @@
   font-family: "Poppins", sans-serif;
 }
 
+.logo {
+  height: 80px;
+  width: 80px;
+}
+
 .card {
   height: 90%;
 }
