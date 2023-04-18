@@ -93,7 +93,7 @@
     </section>
     <!-- ====================
                 Slider
-        ==================== -->
+    ==================== -->
 
     <section id="home">
       <br /><br /><br /><br />
@@ -423,12 +423,13 @@
           <br /><br />
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 col-12 m-auto">
-              <form>
+              <form onsubmit="getMail(); reset(); return false; ">
                 <div class="mb-3 my-5">
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Your Name *"
+                    id="name"
                     required
                   />
                 </div>
@@ -438,6 +439,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Your Mobile Number *"
+                    id="mobile"
                     required
                   />
                 </div>
@@ -447,6 +449,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Your Email Address *"
+                    id="emailid"
                     required
                   />
                 </div>
@@ -456,6 +459,7 @@
                     class="form-control"
                     rows="3"
                     placeholder="Your Query *"
+                    id="query"
                     required
                   ></textarea>
                 </div>
@@ -618,5 +622,38 @@
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
     ></script>
+
+    <!-- ====================
+        Sending mail Function 
+      ==================== -->
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+      function getMail() {
+        let name = document.getElementById("name").value;
+        let mobile = document.getElementById("mobile").value;
+        let emailid = document.getElementById("emailid").value;
+        let query = document.getElementById("query").value;
+
+        Email.send({
+          SecureToken: "5eab185b-370c-4702-a8d8-a3c1ef180a5c",
+          To: "palakfurniture24@gmail.com",
+          From: "brijeshgajjar1401@gmail.com",
+          Subject: "Mail From The Contact Form",
+          Body:
+            "Name: " +
+            name +
+            "<br/> Mobile: " +
+            mobile +
+            "<br/> Email: " +
+            emailid +
+            "<br/> Query: " +
+            query,
+        }).then((message) =>
+          alert("Your Message Has Been Sent Successfullly..")
+        );
+      }
+    </script>
   </body>
 </html>
